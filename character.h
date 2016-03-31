@@ -15,9 +15,7 @@ public:
 	Character(int hitPoints, int attack) :
 			hitPoints_(hitPoints),
 			attack_(attack),
-			isDead_(false),
-			x_(0),
-			y_(0)
+			isDead_(false)
 	{}
 
 	int getHitPoints() const { return hitPoints_; }
@@ -29,6 +27,11 @@ public:
 		hitPoints_ += val;
 		if (hitPoints_ <= 0)
 			isDead_ = true;
+	}
+
+	void setPosition(int x, int y) {
+		x_ = x;
+		y_ = y;
 	}
 
 	void move(Direction dir) {

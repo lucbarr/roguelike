@@ -15,6 +15,8 @@ private:
 public:
 	Map(Character& character) : character_(character)
 	{
+		character_.setPosition(50, 20);
+
 		for (int i = 0; i < MAP_MAX_HEIGHT; ++i) {
 			for (int j = 0; j < MAP_MAX_WIDTH; ++j) {
 				terrain_[i][j] = '.';
