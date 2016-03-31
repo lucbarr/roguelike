@@ -1,39 +1,40 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+#include <stdio.h>
 
 #include "map.h"
 #include "character.h"
 
-Direction getInput() {
+Vec getInput() {
 	while (1) { 
 		char c; 
 		// TODO(luciano): Make this right
-		c = std::getchar();
-		std::getchar();
+		scanf (" %c", &c);
 		switch (c) {
-			case 'n':
+			case 'w':
 				return NORTH;
 			case 's':
 				return SOUTH;
-			case 'w':
+			case 'a':
 				return WEST;
-			case 'e':
+			case 'd':
 				return EAST;
 			default:
-				break;
+				return getInput();
 		}
 	}
 }
 
 int main() {
+	Character character2 (4,4);
 	Character character(5,5);
 	Map map(character);
 	while (1) {
 		system("clear");
 		map.print();
-		Direction dir = getInput();
-		character.move(dir);
+		Vec dir = getInput();
+		map.moveCharacter(dir);
 	}
 
 	

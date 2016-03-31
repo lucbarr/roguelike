@@ -19,7 +19,7 @@ public:
 
 		for (int i = 0; i < MAP_MAX_HEIGHT; ++i) {
 			for (int j = 0; j < MAP_MAX_WIDTH; ++j) {
-				terrain_[i][j] = '.';
+				terrain_[i][j] = ' ';
 			}
 		}
 
@@ -37,13 +37,21 @@ public:
 	void print() {
 		for (int y = 0; y < MAP_MAX_HEIGHT; ++y) {
 			for (int x = 0; x < MAP_MAX_WIDTH; ++x) {
-				if ((x == character_.getX()) && (y == character_.getY()))	
-					std::cout << CHAR_SYMBOL;
+				if ((x == character_.getPos().x) && (y == character_.getPos().y))
+					std::cout << character_.getSymbol();
 				else	
 					std::cout << terrain_[y][x];
 			}
 			std::cout << std::endl;
 		}
+	}
+
+	void moveCharacter (Vec dir) {
+		Vec dest = character_.getPos();
+		dest.x += dir.x;
+		dest.y += dir.y;
+		if (terrain_[dest.y][dest.x] == ' ')
+			character_.move(dir);
 	}
 };
 
