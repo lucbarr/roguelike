@@ -3,6 +3,8 @@
 
 #include "enum.h"
 
+const char CHAR_SYMBOL = '@';
+
 class Character {
 private:
 	int hitPoints_;
@@ -17,7 +19,7 @@ public:
 			x_(0),
 			y_(0)
 	{}
-	
+
 	int getHitPoints() const { return hitPoints_; }
 	int getAttack() const { return attack_; }
 	int getX() const { return x_; }
