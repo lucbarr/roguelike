@@ -11,11 +11,11 @@ const int MAP_MAX_HEIGHT = 40;
 class Map {
 private:
 	char terrain_[MAP_MAX_HEIGHT][MAP_MAX_WIDTH];
-	Character& character_;
+	Entity& entity_;
 public:
-	Map(Character& character) : character_(character)
+	Map(Entity& entity) : entity_(entity)
 	{
-		character_.setPosition(50, 20);
+		entity_.setPosition(50, 20);
 
 		for (int i = 0; i < MAP_MAX_HEIGHT; ++i) {
 			for (int j = 0; j < MAP_MAX_WIDTH; ++j) {
@@ -37,8 +37,8 @@ public:
 	void print() {
 		for (int y = 0; y < MAP_MAX_HEIGHT; ++y) {
 			for (int x = 0; x < MAP_MAX_WIDTH; ++x) {
-				if ((x == character_.getPos().x) && (y == character_.getPos().y))
-					std::cout << character_.getSymbol();
+				if ((x == entity_.getPos().x) && (y == entity_.getPos().y))
+					std::cout << entity_.getSymbol();
 				else	
 					std::cout << terrain_[y][x];
 			}
@@ -47,11 +47,11 @@ public:
 	}
 
 	void moveCharacter (Vec dir) {
-		Vec dest = character_.getPos();
+		Vec dest = entity_.getPos();
 		dest.x += dir.x;
 		dest.y += dir.y;
 		if (terrain_[dest.y][dest.x] == ' ')
-			character_.move(dir);
+			entity_.move(dir);
 	}
 };
 
